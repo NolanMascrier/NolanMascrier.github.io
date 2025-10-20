@@ -1,28 +1,109 @@
+@font-face {
+  font-family: titleFont;
+  src: url('../fonts/title.ttf');
+}
+
+@font-face {
+  font-family: subtitleFont;
+  src: url('../fonts/subtitle.ttf');
+}
+
+@keyframes fadeInFrame {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownText {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   color: #222;
-  background-color: #f8f9fa;
+  background-image: url('../images/noise.png');
 }
 
 header {
-  background: #333;
+  background-image: url('../images/bg.png');
+  background-repeat: no-repeat;
+  background-position: center;
   color: #fff;
   padding: 1rem;
   text-align: center;
 }
 
-nav a {
-  color: #fff;
-  margin: 0 1rem;
-  text-decoration: none;
+header h1 {
+  font-family: titleFont;
+  color: black;
+  font-size: 250%;
+  padding-top: 1.2%;
 }
 
-nav a:hover {
-  text-decoration: underline;
+header nav a{
+   color: black; 
+   font-family: subtitleFont;
+   margin-top: -1%;
+   margin: 0 1rem;
+   text-decoration: none;
 }
 
-section {
-  padding: 2rem;
+footer {
+  text-align: center;
+  padding: 1rem;
 }
+
+header nav a.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+main div.animate-on-scroll {
+  border: 64px solid transparent;
+  border-image-source: url("../images/corner.png");
+  border-image-slice: 64 64 fill;
+  border-image-repeat: repeat;
+  border-image-width: 64px;
+  background: transparent;
+  text-align: center;
+  margin: 3rem 10%;
+  padding: 2%;
+  color: black;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+main div.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+main div.animate-on-scroll * {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+main div.animate-on-scroll.visible * {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+main div.animate-on-scroll.visible h2 { transition-delay: 0.4s; }
+main div.animate-on-scroll.visible p  { transition-delay: 0.55s; }
+main div.animate-on-scroll.visible h3 { transition-delay: 0.4s; }
