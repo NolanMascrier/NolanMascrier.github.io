@@ -107,3 +107,265 @@ main div.animate-on-scroll.visible * {
 main div.animate-on-scroll.visible h2 { transition-delay: 0.4s; }
 main div.animate-on-scroll.visible p  { transition-delay: 0.55s; }
 main div.animate-on-scroll.visible h3 { transition-delay: 0.4s; }
+
+.about-title {
+	font-size: 7.5rem;
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: -0.02em;
+	position: absolute;
+	top: 45px;
+	left: 50%;
+	transform: translateX(-50%);
+	pointer-events: none;
+	white-space: nowrap;
+	font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+	background: linear-gradient(
+		to bottom,
+		rgb(8 42 123 / 35%) 30%,
+		rgb(255 255 255 / 0%) 76%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.carousel-container {
+	width: 100%;
+	max-width: 60%;
+	height: 250px;
+	position: relative;
+	perspective: 1000px;
+	margin-top: 0px;
+	margin-left: 10%;
+}
+
+.carousel-track {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	transform-style: preserve-3d;
+	transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card {
+	position: absolute;
+	width: 100%;
+	height: 250px;
+	background: transparent;
+	border-radius: 20px;
+	overflow: hidden;
+	transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	cursor: pointer;
+}
+
+.card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card.center {
+	z-index: 10;
+	transform: scale(1.1) translateZ(0);
+}
+
+.card.center img {
+	filter: none;
+}
+
+.card.left-2 {
+	z-index: 1;
+	transform: translateX(50%) scale(0.8) translateZ(-30px);
+	opacity: 0.7;
+	background-color: red;
+}
+
+.card.left-2 img {
+	filter: grayscale(100%);
+}
+
+.card.left-1 {
+	z-index: 5;
+	transform: translateX(-20px) scale(0.9) translateZ(-10px);
+	opacity: 0.9;
+}
+
+.card.left-1 img {
+	filter: grayscale(100%);
+}
+
+.card.right-1 {
+	z-index: 5;
+	transform: translateX(200px) scale(0.9) translateZ(-100px);
+	opacity: 0.9;
+}
+
+.card.right-1 img {
+	filter: grayscale(100%);
+}
+
+.card.right-2 {
+	z-index: 1;
+	transform: translateX(400px) scale(0.8) translateZ(-300px);
+	opacity: 0.7;
+}
+
+.card.right-2 img {
+	filter: grayscale(100%);
+}
+
+.card.hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.dots {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 4%;
+}
+
+.dot {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.dot.active {
+	background: rgb(0, 0, 0);
+	transform: scale(1.2);
+}
+
+.nav-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(8, 42, 123, 0.6);
+	color: white;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 20;
+	transition: all 0.3s ease;
+	font-size: 1.5rem;
+	border: none;
+	outline: none;
+	padding-bottom: 4px;
+}
+
+.nav-arrow:hover {
+	background: rgba(0, 0, 0, 0.8);
+	transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow.left {
+	left: 20px;
+	padding-right: 3px;
+}
+
+.nav-arrow.right {
+	right: 20px;
+	padding-left: 3px;
+}
+
+.desc_contain {
+  display: flex;
+  align-items: flex-start;
+}
+
+.desc_contain .left {
+  flex: 6; /* 60% */
+}
+
+.desc_contain .right {
+  flex: 4; /* 40% */
+}
+
+/* Stack vertically on smaller screens */
+@media (max-width: 768px) {
+  .desc_contain {
+    flex-direction: column;
+  }
+}
+
+.lightbox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.95);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.lightbox-img {
+	max-width: 90%;
+	max-height: 90vh;
+	object-fit: contain;
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+	position: absolute;
+	top: 20px;
+	right: 40px;
+	font-size: 50px;
+	color: white;
+	cursor: pointer;
+	z-index: 10000;
+	transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+	color: #ccc;
+}
+
+.lightbox-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	color: white;
+	font-size: 40px;
+	padding: 20px 15px;
+	cursor: pointer;
+	transition: background 0.2s;
+	z-index: 10000;
+}
+
+.lightbox-arrow:hover {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-left {
+	left: 20px;
+}
+
+.lightbox-right {
+	right: 20px;
+}
