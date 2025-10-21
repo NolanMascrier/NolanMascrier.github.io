@@ -1,7 +1,6 @@
 (function() {
 	console.log("Carousel script loaded");
 
-	// Find all carousel containers on the page
 	const carouselContainers = document.querySelectorAll(".carousel-container");
 	
 	if (carouselContainers.length === 0) {
@@ -9,7 +8,6 @@
 		return;
 	}
 
-	// Create or get existing lightbox
 	let lightbox = document.querySelector('.lightbox');
 	if (!lightbox) {
 		lightbox = document.createElement('div');
@@ -30,7 +28,6 @@
 
 	let activeLightboxCarousel = null;
 
-	// Lightbox functions
 	function openLightbox(carousel, index) {
 		const img = carousel.cards[index].querySelector('img');
 		if (img) {
@@ -56,7 +53,6 @@
 		}
 	}
 
-	// Remove old event listeners by cloning elements (prevents duplicate listeners)
 	const newLightboxClose = lightboxClose.cloneNode(true);
 	lightboxClose.parentNode.replaceChild(newLightboxClose, lightboxClose);
 	
@@ -66,7 +62,6 @@
 	const newLightboxRight = lightboxRight.cloneNode(true);
 	lightboxRight.parentNode.replaceChild(newLightboxRight, lightboxRight);
 
-	// Lightbox controls
 	newLightboxClose.addEventListener('click', closeLightbox);
 
 	newLightboxLeft.addEventListener('click', (e) => {
@@ -85,12 +80,10 @@
 		}
 	});
 
-	// Remove old keyboard listener if exists
 	if (window.carouselKeyboardHandler) {
 		document.removeEventListener("keydown", window.carouselKeyboardHandler);
 	}
 
-	// Global keyboard navigation
 	window.carouselKeyboardHandler = function(e) {
 		if (lightbox.classList.contains('active')) {
 			if (e.key === "Escape") {
@@ -104,7 +97,6 @@
 	};
 	document.addEventListener("keydown", window.carouselKeyboardHandler);
 
-	// Remove old touch handlers if they exist
 	if (window.carouselTouchStart) {
 		document.removeEventListener("touchstart", window.carouselTouchStart);
 	}
@@ -112,7 +104,6 @@
 		document.removeEventListener("touchend", window.carouselTouchEnd);
 	}
 
-	// Touch support for lightbox
 	let touchStartX = 0;
 	let touchEndX = 0;
 
@@ -193,7 +184,7 @@
 
 				setTimeout(() => {
 					this.isAnimating = false;
-				}, 800);
+				}, 200);
 			}
 		};
 
