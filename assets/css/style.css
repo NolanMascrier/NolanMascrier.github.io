@@ -443,3 +443,7 @@ main div.animate-on-scroll.visible h3 { transition-delay: 0.4s; }
 ul li {
 	text-align: left;
 }
+
+a:hover {
+	color: blanchedalmond;
+}
