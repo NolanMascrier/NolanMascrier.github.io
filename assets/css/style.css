@@ -257,7 +257,7 @@ main div.animate-on-scroll.visible h3 { transition-delay: 0.4s; }
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	background: rgba(8, 42, 123, 0.6);
+	background: rgba(0, 0, 0, 0.4);
 	color: white;
 	width: 40px;
 	height: 40px;
@@ -272,8 +272,6 @@ main div.animate-on-scroll.visible h3 { transition-delay: 0.4s; }
 	border: none;
 	outline: none;
 	padding-bottom: 4px;
-	margin-left: -70px;
-	margin-right: -70px;
 }
 
 .nav-arrow:hover {
@@ -282,12 +280,14 @@ main div.animate-on-scroll.visible h3 { transition-delay: 0.4s; }
 }
 
 .nav-arrow.left {
-	left: 20px;
+	left: -50px;  /* Move outside carousel container */
+	top: 70%;
 	padding-right: 3px;
 }
 
 .nav-arrow.right {
-	right: 20px;
+	right: -50px;  /* Move outside carousel container */
+	top: 60%;
 	padding-left: 3px;
 }
 
@@ -303,6 +303,20 @@ main div.animate-on-scroll.visible h3 { transition-delay: 0.4s; }
 }
 
 .desc_contain .right {
+  flex: 4; /* 40% */
+}
+
+.desc_contain .left_s {
+  flex: 6; /* 60% */
+  margin-top: 0.5%;
+	margin-left: -10%;
+}
+
+.desc_contain .left_s img {
+  width: 50%;
+}
+
+.desc_contain .right_s {
   flex: 4; /* 40% */
 }
 
@@ -412,4 +426,20 @@ main div.animate-on-scroll.visible h3 { transition-delay: 0.4s; }
 	width: 32px;
 	height: 32px;
 	vertical-align: middle;
+}
+
+.alt_link {
+	text-decoration: none;
+	color: white;
+}
+
+.about-text {
+	font-size: 1.2rem;
+	line-height: 1.6;
+	color: white;
+	text-align: left;
+}
+
+ul li {
+	text-align: left;
 }
