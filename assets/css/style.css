@@ -44,6 +44,8 @@ body {
   padding: 0;
   color: #222;
   background-image: url('../images/noise.png');
+  background-repeat: repeat-x repeat-y;
+  background-attachment: fixed;
 }
 
 header {
